@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: flipkart-app-container
-          image: harishnshetty/flipkart:latest
+          image: harishnshetty/flipkartapp:latest
           ports:
             - containerPort: 80
           resources:
@@ -47,7 +47,6 @@ spec:
   selector:
     app.kubernetes.io/name: flipkart-app
 
-    
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -62,10 +61,10 @@ spec:
   rules:
     - http:
         paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: flipkart-app-service
-              port:
-                number: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: flipkart-app-service
+                port:
+                  number: 80
